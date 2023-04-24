@@ -17,8 +17,8 @@ resource webApp 'Microsoft.Web/sites@2022-09-01' = {
   tags: {
     'hidden-related:/subscriptions/${subscription().subscriptionId}/resourcegroups/${resourceGroup().name}/providers/Microsoft.Web/serverfarms/${hostingPlanName}': 'empty'
   }
-  properties: {
-    name: webAppName
+  properties: {   
+    
     siteConfig: {
       appSettings: [
         {
@@ -46,7 +46,6 @@ resource webApp 'Microsoft.Web/sites@2022-09-01' = {
       linuxFxVersion: 'DOCKER|${registry.properties.loginServer}/${imageName}'
     }
     serverFarmId: '/subscriptions/${subscription().subscriptionId}/resourcegroups/${resourceGroup().name}/providers/Microsoft.Web/serverfarms/${hostingPlanName}'
-    hostingEnvironment: ''
   }
   dependsOn: [
     hostingPlan
