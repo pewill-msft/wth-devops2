@@ -45,7 +45,7 @@ resource webApp 'Microsoft.Web/sites@2022-09-01' = {
       appCommandLine: startupCommand
       linuxFxVersion: 'DOCKER|${registry.properties.loginServer}/${imageName}'
     }
-    serverFarmId: '/subscriptions/${subscription().subscriptionId}/resourcegroups/${resourceGroup().name}/providers/Microsoft.Web/serverfarms/${hostingPlanName}'
+    serverFarmId: subscriptionResourceId('Microsoft.Web/serverfarms', hostingPlanName) 
   }
   dependsOn: [
     hostingPlan
