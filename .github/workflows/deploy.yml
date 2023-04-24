@@ -1,5 +1,14 @@
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+     appenv:
+       type: choice
+       description: Choose the target environment
+       options: 
+         - dev
+         - test
+         - prod
+
 
 env:
   targetEnv: test
@@ -25,6 +34,6 @@ jobs:
         scope: subscription
         region: westeurope
         template: ./Bicep-Templates/main.bicep
-        parameters: webAppName=wtpw2devops-${{ env.targetEnv }}
+        parameters: webAppName=wtpw2devops-${{ github.event.inputs.appenv }}
 
 
