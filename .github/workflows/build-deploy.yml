@@ -64,9 +64,6 @@ jobs:
   
     runs-on: ubuntu-latest
     needs: docker-build-and-push
-    environment:
-      name: dev
-      url: https://dynodemoapp-dev.azurewebsites.net
     
     steps:
       - name: 'Login via Azure CLI'
