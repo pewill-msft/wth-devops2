@@ -60,7 +60,7 @@ resource registry 'Microsoft.ContainerRegistry/registries@2022-12-01' = {
   name: registryName
   location: location
   properties: {
-    adminUserEnabled: 'true'
+    adminUserEnabled: true
   }
 }
 
@@ -71,24 +71,22 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   }
   kind: 'linux'
   name: hostingPlanName
+  
   location: location
   properties: {
-    name: hostingPlanName
-    workerSizeId: '0'
     reserved: true
-    numberOfWorkers: '1'
-    hostingEnvironment: ''
   }
 }
 
 resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: appInsightsName
+  kind: 'web'
   location: location
   tags: {
     'hidden-link:${resourceGroup().id}/providers/Microsoft.Web/sites/${webAppName}': 'Resource'
   }
   properties: {
-    applicationId: webAppName
+    Application_Type: 'web'
     Request_Source: 'AzureTfsExtensionAzureProject'
   }
 }
