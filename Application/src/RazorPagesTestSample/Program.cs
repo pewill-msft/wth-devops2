@@ -10,7 +10,7 @@ namespace RazorPagesTestSample
 {
     public class Program
     {
-        // Test change 2
+        // Test change 3
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
