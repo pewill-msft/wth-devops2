@@ -15,11 +15,10 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       # Deploy ARM template
-    - name: Run ARM deploy
+    - name: Run Bicep deploy
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./ARM-Templates/container-webapp-template.json
+        template: ./Bicep-Templates/main.bicep
         
 
