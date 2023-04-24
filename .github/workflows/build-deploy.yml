@@ -1,3 +1,4 @@
+name: Build + push + deploy
 
 on:
    workflow_dispatch:
@@ -82,11 +83,26 @@ jobs:
   deploy-to-test:
   
     runs-on: ubuntu-latest
-    needs: docker-build-and-push
+    needs: deploy-to-dev
     environment: 
       name: test
-      
-    
+    steps:
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'wtpw2devops-${{ vars.ENVIRONMENT_NAME }}'
+          images: ${{env.registryName}}/wth/dotnetcoreapp:${{env.tag}}
+
+  deploy-to-prod:
+  
+    runs-on: ubuntu-latest
+    needs: deploy-to-dev
+    environment: 
+      name: prod
     steps:
       - name: 'Login via Azure CLI'
         uses: azure/login@v1
