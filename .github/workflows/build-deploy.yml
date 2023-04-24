@@ -64,6 +64,9 @@ jobs:
   
     runs-on: ubuntu-latest
     needs: docker-build-and-push
+    environment: 
+      name: dev
+
     
     steps:
       - name: 'Login via Azure CLI'
@@ -74,4 +77,23 @@ jobs:
       - uses: azure/webapps-deploy@v2
         with:
           app-name: 'wtpw2devops-dev'
+          images: ${{env.registryName}}/wth/dotnetcoreapp:${{env.tag}}
+
+  deploy-to-test:
+  
+    runs-on: ubuntu-latest
+    needs: docker-build-and-push
+    environment: 
+      name: test
+      
+    
+    steps:
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'wtpw2devops-${{ vars.ENVIRONMENT_NAME }}'
           images: ${{env.registryName}}/wth/dotnetcoreapp:${{env.tag}}
