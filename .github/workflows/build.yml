@@ -4,15 +4,17 @@
 name: Build and test .NET
 
 on:
-  push:
-    branches: [ "main" ]
-    paths: 
-    - Application/**
-
-  pull_request:
-    branches: [ "main" ]
-    paths: 
-    - Application/**
+  workflow_dispatch:
+    
+#   push:
+#     branches: [ "main" ]
+#     paths: 
+#     - Application/**
+# 
+#   pull_request:
+#     branches: [ "main" ]
+#     paths: 
+#     - Application/**
 
 jobs:
   build:
