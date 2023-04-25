@@ -14,8 +14,8 @@ on:
      - Application/**
 
 env:
-  prefix: wtps5
-  registryName: wtps5devopsreg.azurecr.io
+  prefix: wtps6
+  registryName: wtps6devopsreg.azurecr.io
   repositoryName: wth/dotnetcoreapp
   dockerfilePath: ./Application/src/RazorPagesTestSample
   tag: ${{github.run_number}}
