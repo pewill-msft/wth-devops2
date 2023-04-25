@@ -14,7 +14,7 @@ on:
      - Application/**
 
 env:
-  registryName: wtpw2devopsreg.azurecr.io
+  registryName: wtpw3devopsreg.azurecr.io
   repositoryName: wth/dotnetcoreapp
   dockerfilePath: ./Application/src/RazorPagesTestSample
   tag: ${{github.run_number}}
@@ -77,7 +77,7 @@ jobs:
 
       - uses: azure/webapps-deploy@v2
         with:
-          app-name: 'wtpw2devops-dev'
+          app-name: 'wtpw3devops-dev'
           images: ${{env.registryName}}/wth/dotnetcoreapp:${{env.tag}}
 
   deploy-to-test:
@@ -94,7 +94,7 @@ jobs:
 
       - uses: azure/webapps-deploy@v2
         with:
-          app-name: 'wtpw2devops-${{ vars.ENVIRONMENT_NAME }}'
+          app-name: 'wtpw3devops-${{ vars.ENVIRONMENT_NAME }}'
           images: ${{env.registryName}}/wth/dotnetcoreapp:${{env.tag}}
 
   deploy-to-prod:
@@ -111,5 +111,5 @@ jobs:
 
       - uses: azure/webapps-deploy@v2
         with:
-          app-name: 'wtpw2devops-${{ vars.ENVIRONMENT_NAME }}'
+          app-name: 'wtpw3devops-${{ vars.ENVIRONMENT_NAME }}'
           images: ${{env.registryName}}/wth/dotnetcoreapp:${{env.tag}}
