@@ -14,8 +14,8 @@ on:
      - Application/**
 
 env:
-  prefix: pwwt1
-  registryName: pwwt1devopsreg.azurecr.io
+  prefix: pwwt2
+  registryName: pwwt2devopsreg.azurecr.io
   repositoryName: wth/dotnetcoreapp
   dockerfilePath: ./Application/src/RazorPagesTestSample
   tag: ${{github.run_number}}
