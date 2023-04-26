@@ -14,8 +14,8 @@ on:
      - Application/**
 
 env:
-  prefix: wtps7
-  registryName: wtps7devopsreg.azurecr.io
+  prefix: pwwt1
+  registryName: pwwt1devopsreg.azurecr.io
   repositoryName: wth/dotnetcoreapp
   dockerfilePath: ./Application/src/RazorPagesTestSample
   tag: ${{github.run_number}}
@@ -74,7 +74,7 @@ jobs:
       - name: 'Login via Azure CLI'
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_2 }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - uses: azure/webapps-deploy@v2
         with:
