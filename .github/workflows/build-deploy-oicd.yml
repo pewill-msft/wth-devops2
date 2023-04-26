@@ -12,9 +12,11 @@ on:
      branches: [ "main" ]
      paths: 
      - Application/**
-permissions
+     
+permissions:
   id-token: write
   contents: read
+  
 env:
   prefix: pwwt3
   registryName: pwwt3devopsreg.azurecr.io
